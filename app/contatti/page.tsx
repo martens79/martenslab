@@ -30,15 +30,21 @@ export default function ContattiPage() {
 
       if (data.success === "true" || data.success === true) {
         setStatus("success");
-        setMessage("Messaggio inviato correttamente. Ti risponderò appena possibile.");
+        setMessage(
+          "Grazie, il tuo messaggio è stato inviato correttamente. Ti risponderò appena possibile."
+        );
         form.reset();
       } else {
         setStatus("error");
-        setMessage("Qualcosa non ha funzionato. Riprova tra poco.");
+        setMessage(
+          "Non sono riuscito a inviare il messaggio in questo momento. Riprova tra poco oppure scrivimi direttamente via email."
+        );
       }
     } catch {
       setStatus("error");
-      setMessage("Errore durante l’invio. Riprova tra poco.");
+      setMessage(
+        "C’è stato un problema durante l’invio. Riprova tra poco oppure contattami direttamente via email."
+      );
     }
   }
 
@@ -169,7 +175,10 @@ export default function ContattiPage() {
               />
 
               <div>
-                <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/85">
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-sm font-medium text-white/85"
+                >
                   Nome
                 </label>
                 <input
@@ -183,7 +192,10 @@ export default function ContattiPage() {
               </div>
 
               <div>
-                <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/85">
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-sm font-medium text-white/85"
+                >
                   Email
                 </label>
                 <input
@@ -197,7 +209,10 @@ export default function ContattiPage() {
               </div>
 
               <div>
-                <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/85">
+                <label
+                  htmlFor="message"
+                  className="mb-2 block text-sm font-medium text-white/85"
+                >
                   Messaggio
                 </label>
                 <textarea
@@ -215,17 +230,28 @@ export default function ContattiPage() {
                 disabled={status === "loading"}
                 className="w-full rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.01] hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {status === "loading" ? "Invio in corso..." : "Invia messaggio"}
+                {status === "loading" ? "Sto inviando il messaggio..." : "Invia messaggio"}
               </button>
 
+              <p className="text-xs leading-5 text-white/45">
+                Nessun invio automatico o spam: leggerò personalmente il tuo messaggio.
+              </p>
+
               {message && (
-                <p
-                  className={`text-sm ${
-                    status === "success" ? "text-emerald-300" : "text-red-300"
+                <div
+                  className={`rounded-2xl border px-4 py-3 text-sm leading-6 ${
+                    status === "success"
+                      ? "border-emerald-300/25 bg-emerald-400/10 text-emerald-200"
+                      : "border-red-300/25 bg-red-400/10 text-red-200"
                   }`}
                 >
-                  {message}
-                </p>
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 text-base font-semibold">
+                      {status === "success" ? "✓" : "!"}
+                    </span>
+                    <p>{message}</p>
+                  </div>
+                </div>
               )}
             </form>
           </div>
