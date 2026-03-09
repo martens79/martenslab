@@ -1,21 +1,50 @@
 "use client";
 
+import {
+  Monitor,
+  RefreshCw,
+  MousePointerClick,
+  Wrench,
+  ShieldCheck,
+  ArrowRightLeft,
+  Globe,
+  Search,
+  Rocket,
+  LayoutTemplate,
+  Server,
+  Smartphone,
+} from "lucide-react";
+
 const services = [
   {
     title: "Siti vetrina",
     desc: "Pagine eleganti e veloci per professionisti, studi, attività locali e brand personali.",
+    icon: Monitor,
   },
   {
     title: "Restyling siti",
     desc: "Rinnovo siti esistenti con un design più moderno, chiaro e credibile.",
+    icon: RefreshCw,
   },
   {
     title: "Landing page",
     desc: "Pagine mirate per presentare un servizio, raccogliere contatti o validare un progetto.",
+    icon: MousePointerClick,
   },
   {
     title: "Supporto tecnico",
     desc: "Interventi su layout, responsive, contatti, performance, SEO base e piccoli fix mirati.",
+    icon: Wrench,
+  },
+  {
+    title: "Manutenzione WordPress",
+    desc: "Aggiornamento plugin, sicurezza, backup e manutenzione di siti WordPress e CMS simili.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Migrazione siti",
+    desc: "Spostamento siti tra hosting o domini, configurazione tecnica e verifica del corretto funzionamento.",
+    icon: ArrowRightLeft,
   },
 ];
 
@@ -37,6 +66,15 @@ const projects = [
   },
 ];
 
+const techStack = [
+  { label: "Next.js", icon: Rocket },
+  { label: "WordPress", icon: Globe },
+  { label: "Responsive", icon: Smartphone },
+  { label: "SEO base", icon: Search },
+  { label: "Landing page", icon: LayoutTemplate },
+  { label: "Hosting & migrazione", icon: Server },
+];
+
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#07111f] text-white">
@@ -49,55 +87,86 @@ export default function HomePage() {
       </div>
 
       {/* HERO */}
-      <section className="relative px-6 pb-16 pt-24 md:px-10 md:pb-20 md:pt-32">
-        <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
-              Studio web indipendente · design + sviluppo
-            </span>
+<section className="relative px-6 pb-32 pt-24 md:px-10 md:pb-36 md:pt-28">
+  <div className="mx-auto max-w-6xl">
+    <div className="mx-auto max-w-4xl text-center">
+      <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
+        Studio web indipendente · design + sviluppo
+      </span>
 
-            <h1 className="mt-6 text-balance text-5xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-              <span className="martens-shine">MartensLab</span>
-            </h1>
+      <h1 className="mt-6 text-balance text-5xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+        <span className="martens-shine">MartensLab</span>
+      </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg md:text-xl">
-              Realizzo siti web moderni, curati e veloci per attività, professionisti
-              e progetti che vogliono presentarsi bene e lasciare il segno.
-            </p>
+      <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg md:text-xl">
+        Realizzo siti web moderni, curati e veloci per attività, professionisti
+        e progetti che vogliono presentarsi bene e lasciare il segno.
+      </p>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="/contatti"
-                className="rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.03] hover:bg-cyan-300"
-              >
-                Richiedi un preventivo
-              </a>
+      <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/contatti"
+          className="rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.03] hover:bg-cyan-300"
+        >
+          Richiedi un preventivo
+        </a>
 
-              <a
-                href="/servizi"
-                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition duration-300 hover:scale-[1.03] hover:bg-white/10"
-              >
-                Scopri i servizi
-              </a>
-            </div>
+        <a
+          href="#servizi"
+          className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition duration-300 hover:scale-[1.03] hover:bg-white/10"
+        >
+          Scopri i servizi
+        </a>
+      </div>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-white/55">
-              <span className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1">
-                Next.js
-              </span>
-              <span className="rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-1">
-                Design su misura
-              </span>
-              <span className="rounded-full border border-fuchsia-400/20 bg-fuchsia-400/5 px-3 py-1">
-                Responsive
-              </span>
-              <span className="rounded-full border border-yellow-400/20 bg-yellow-400/5 px-3 py-1">
-                SEO base
-              </span>
-            </div>
-          </div>
+      <div className="mt-14 flex flex-wrap items-center justify-center gap-3 text-sm text-white/55">
+        <span className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1">
+          Next.js
+        </span>
+        <span className="rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-1">
+          Design su misura
+        </span>
+        <span className="rounded-full border border-fuchsia-400/20 bg-fuchsia-400/5 px-3 py-1">
+          Responsive
+        </span>
+        <span className="rounded-full border border-yellow-400/20 bg-yellow-400/5 px-3 py-1">
+          SEO base
+        </span>
+        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+          WordPress
+        </span>
+      </div>
+
+      <div className="mt-16 text-center">
+        <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/40">
+          Progetti e collaborazioni
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-3 text-sm text-white/60">
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
+            CertifyQuiz
+          </span>
+
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
+            Dentro le Parole
+          </span>
+
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
+            Progetti editoriali
+          </span>
+
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
+            Landing page professionali
+          </span>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+     
+
 
       {/* SERVIZI */}
       <section id="servizi" className="relative px-6 py-12 md:px-10 md:py-16">
@@ -110,22 +179,67 @@ export default function HomePage() {
               Soluzioni web essenziali, ma fatte bene
             </h2>
             <p className="mt-3 max-w-2xl text-white/65">
-              Non siti gonfi di effetti inutili. Punto a chiarezza, impatto visivo,
-              velocità e una struttura che dia subito un’impressione professionale.
+              Realizzo siti chiari, veloci e credibili, ma posso aiutare anche su
+              manutenzione, piccoli interventi tecnici, restyling e migrazioni di siti WordPress.
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="group rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.07]"
-              >
-                <div className="mb-4 h-11 w-11 rounded-2xl bg-gradient-to-br from-cyan-400/20 via-blue-400/10 to-emerald-400/20 ring-1 ring-white/10" />
-                <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/65">{service.desc}</p>
-              </div>
-            ))}
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service) => {
+              const Icon = service.icon;
+
+              return (
+                <div
+                  key={service.title}
+                  className="group rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.07]"
+                >
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/20 via-blue-400/10 to-emerald-400/20 ring-1 ring-white/10">
+                    <Icon className="h-5 w-5 text-cyan-200" />
+                  </div>
+
+                  <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/65">{service.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* TECNOLOGIE */}
+      <section className="relative px-6 py-8 md:px-10 md:py-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 backdrop-blur md:p-8">
+            <div className="mb-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/55">
+                Tecnologie e ambiti
+              </p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+                Strumenti e competenze che uso più spesso
+              </h2>
+              <p className="mt-3 max-w-2xl text-white/65">
+                Non mi interessa complicare i progetti con stack inutili: scelgo strumenti
+                adatti, leggeri e concreti in base al tipo di sito e agli obiettivi.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+              {techStack.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.label}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:border-cyan-300/25 hover:bg-white/[0.08]"
+                  >
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                      <Icon className="h-4.5 w-4.5 text-white/80" />
+                    </div>
+                    <p className="text-sm font-medium text-white/85">{item.label}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -171,7 +285,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PERCHE' SCEGLIERMI */}
+      {/* APPROCCIO + CTA */}
       <section className="relative px-6 py-12 md:px-10 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur md:p-8">
@@ -226,8 +340,8 @@ export default function HomePage() {
               Facciamolo partire bene
             </h2>
             <p className="mt-4 text-white/75">
-              Che tu parta da zero o abbia già un sito da migliorare, possiamo
-              costruire una presenza online più forte, più chiara e più tua.
+              Che tu parta da zero o abbia già un sito da migliorare, posso aiutarti
+              a costruire una presenza online più forte, più chiara e più tua.
             </p>
 
             <div className="mt-8 flex flex-col gap-4">
