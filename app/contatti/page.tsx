@@ -148,7 +148,7 @@ export default function ContattiPage() {
           </div>
 
           {/* FORM */}
-          <div className="rounded-[2rem] border border-cyan-300/20 bg-gradient-to-br from-cyan-400/10 via-blue-400/5 to-emerald-400/10 p-7 backdrop-blur md:p-8">
+          <div className="rounded-[2rem] border border-cyan-300/20 bg-gradient-to-br from-cyan-400/10 via-blue-400/5 to-emerald-400/10 p-7 shadow-[0_0_60px_rgba(34,211,238,0.08)] backdrop-blur md:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200/90">
               Scrivimi
             </p>
@@ -186,7 +186,7 @@ export default function ContattiPage() {
                   name="name"
                   type="text"
                   required
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/40 focus:bg-white/[0.07]"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/50 focus:bg-white/[0.08] focus:shadow-[0_0_0_4px_rgba(34,211,238,0.08)]"
                   placeholder="Il tuo nome"
                 />
               </div>
@@ -203,7 +203,7 @@ export default function ContattiPage() {
                   name="email"
                   type="email"
                   required
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/40 focus:bg-white/[0.07]"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/50 focus:bg-white/[0.08] focus:shadow-[0_0_0_4px_rgba(34,211,238,0.08)]"
                   placeholder="La tua email"
                 />
               </div>
@@ -220,7 +220,7 @@ export default function ContattiPage() {
                   name="message"
                   required
                   rows={6}
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/40 focus:bg-white/[0.07]"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/50 focus:bg-white/[0.08] focus:shadow-[0_0_0_4px_rgba(34,211,238,0.08)]"
                   placeholder="Dimmi qualcosa sul tuo progetto, sul sito che hai in mente o sul problema che vuoi risolvere"
                 />
               </div>
@@ -228,7 +228,7 @@ export default function ContattiPage() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.01] hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-70"
+                className="w-full rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 shadow-[0_10px_30px_rgba(34,211,238,0.18)] transition duration-300 hover:scale-[1.01] hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {status === "loading" ? "Sto inviando il messaggio..." : "Invia messaggio"}
               </button>
@@ -239,7 +239,7 @@ export default function ContattiPage() {
 
               {message && (
                 <div
-                  className={`rounded-2xl border px-4 py-3 text-sm leading-6 ${
+                  className={`rounded-2xl border px-4 py-4 text-sm leading-6 shadow-sm ${
                     status === "success"
                       ? "border-emerald-300/25 bg-emerald-400/10 text-emerald-200"
                       : "border-red-300/25 bg-red-400/10 text-red-200"
