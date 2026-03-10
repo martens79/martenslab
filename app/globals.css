@@ -56,3 +56,98 @@ body {
     background-position: 260% center;
   }
 }
+@keyframes orbitSpin {
+  from {
+    transform: rotate(var(--angle)) translateX(var(--radius)) rotate(calc(var(--angle) * -1));
+  }
+  to {
+    transform: rotate(calc(var(--angle) + 360deg)) translateX(var(--radius)) rotate(calc((var(--angle) + 360deg) * -1));
+  }
+}
+
+.orbit {
+  position: absolute;
+  inset: 0;
+  animation: orbitSpin var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.orbit-pill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  color: rgba(255,255,255,0.55);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+}
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 10px));
+    }
+  }
+
+  @keyframes orbitSpin {
+    from {
+      transform: rotate(var(--angle))
+        translateX(var(--radius))
+        rotate(calc(var(--angle) * -1));
+    }
+    to {
+      transform: rotate(calc(var(--angle) + 360deg))
+        translateX(var(--radius))
+        rotate(calc((var(--angle) + 360deg) * -1));
+    }
+  }
+
+  @keyframes orbitSpinExpanded {
+    from {
+      transform: rotate(var(--angle))
+        translateX(var(--radius-expanded))
+        rotate(calc(var(--angle) * -1));
+    }
+    to {
+      transform: rotate(calc(var(--angle) + 360deg))
+        translateX(var(--radius-expanded))
+        rotate(calc((var(--angle) + 360deg) * -1));
+    }
+  }
+
+  .orbit {
+    position: absolute;
+    inset: 0;
+    animation: orbitSpin var(--duration) linear infinite;
+    animation-delay: var(--delay);
+    transition: all 0.35s ease;
+  }
+
+  .orbit-expanded {
+    animation-name: orbitSpinExpanded;
+  }
+
+  .orbit-pill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -10px;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}

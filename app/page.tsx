@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, type CSSProperties } from "react";
 import {
   Monitor,
   RefreshCw,
@@ -7,13 +8,8 @@ import {
   Wrench,
   ShieldCheck,
   ArrowRightLeft,
-  Globe,
-  Search,
-  Rocket,
-  LayoutTemplate,
-  Server,
-  Smartphone,
 } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -48,34 +44,39 @@ const services = [
   },
 ];
 
-const projects = [
+const floatingTags = [
+  { label: "Design su misura", radius: 165, angle: 235, duration: 20 },
+  { label: "SEO base", radius: 150, angle: 195, duration: 22 },
+  { label: "Responsive", radius: 165, angle: 330, duration: 18 },
+  { label: "Siti veloci", radius: 145, angle: 150, duration: 16 },
+];
+
+const projectSlides = [
   {
     title: "CertifyQuiz",
-    tag: "Piattaforma quiz",
-    desc: "Piattaforma multi-lingua per quiz e certificazioni IT, con focus su UX, struttura e crescita SEO.",
+    category: "Piattaforma quiz",
+    image: "/images/projects/certifyquiz.jpg",
   },
   {
     title: "Dentro le Parole",
-    tag: "Sito editoriale",
-    desc: "Sito d’autore dal tono dark fantasy, progettato per trasmettere identità, eleganza e atmosfera.",
+    category: "Sito editoriale",
+    image: "/images/projects/dentro-le-parole.jpg",
   },
   {
-    title: "Progetto su misura",
-    tag: "Placeholder",
-    desc: "Ogni attività ha esigenze diverse: struttura, tono, immagini, call to action e obiettivi cambiano.",
+    title: "Trattoria Genovese",
+    category: "Demo ristorante",
+    image: "/images/projects/trattoria-genovese.jpg",
+  },
+  {
+    title: "Hai un progetto?",
+    category: "Richiedi un sito",
+    image: "/images/projects/start-project.jpg",
   },
 ];
-
-const techStack = [
-  { label: "Next.js", icon: Rocket },
-  { label: "WordPress", icon: Globe },
-  { label: "Responsive", icon: Smartphone },
-  { label: "SEO base", icon: Search },
-  { label: "Landing page", icon: LayoutTemplate },
-  { label: "Hosting & migrazione", icon: Server },
-];
+const duplicatedSlides = [...projectSlides, ...projectSlides];
 
 export default function HomePage() {
+  const [heroHovered, setHeroHovered] = useState(false);
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#07111f] text-white">
       {/* SFONDO */}
@@ -87,86 +88,129 @@ export default function HomePage() {
       </div>
 
       {/* HERO */}
-<section className="relative px-6 pb-32 pt-24 md:px-10 md:pb-36 md:pt-28">
-  <div className="mx-auto max-w-6xl">
-    <div className="mx-auto max-w-4xl text-center">
-      <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
-        Studio web indipendente · design + sviluppo
-      </span>
+      <section className="relative flex min-h-[60vh] items-center px-6 pb-4 pt-14 md:px-10 md:pb-6 md:pt-16">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="relative mx-auto max-w-4xl text-center">
+            <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
+              Studio web indipendente · design + sviluppo
+            </span>
 
-      <h1 className="mt-6 text-balance text-5xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-        <span className="martens-shine">MartensLab</span>
-      </h1>
-
-      <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg md:text-xl">
-        Realizzo siti web moderni, curati e veloci per attività, professionisti
-        e progetti che vogliono presentarsi bene e lasciare il segno.
-      </p>
-
-      <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a
-          href="/contatti"
-          className="rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.03] hover:bg-cyan-300"
+    <div className="relative mt-3 flex justify-center">
+  <div className="relative flex h-[200px] w-full max-w-[900px] items-center justify-center md:h-[240px]">
+    {/* ORBITING TAGS */}
+    <div className="pointer-events-none absolute inset-0 hidden md:block">
+      {floatingTags.map((tag, i) => (
+        <div
+          key={tag.label}
+          className={`orbit ${heroHovered ? "orbit-expanded" : ""}`}
+          style={
+            {
+              "--radius": `${tag.radius}px`,
+              "--radius-expanded": `${tag.radius + 34}px`,
+              "--angle": `${tag.angle}deg`,
+              "--duration": `${tag.duration}s`,
+              "--delay": `${i * -2}s`,
+            } as CSSProperties
+          }
         >
-          Richiedi un preventivo
-        </a>
-
-        <a
-          href="#servizi"
-          className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition duration-300 hover:scale-[1.03] hover:bg-white/10"
-        >
-          Scopri i servizi
-        </a>
-      </div>
-
-      <div className="mt-14 flex flex-wrap items-center justify-center gap-3 text-sm text-white/55">
-        <span className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1">
-          Next.js
-        </span>
-        <span className="rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-1">
-          Design su misura
-        </span>
-        <span className="rounded-full border border-fuchsia-400/20 bg-fuchsia-400/5 px-3 py-1">
-          Responsive
-        </span>
-        <span className="rounded-full border border-yellow-400/20 bg-yellow-400/5 px-3 py-1">
-          SEO base
-        </span>
-        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-          WordPress
-        </span>
-      </div>
-
-      <div className="mt-16 text-center">
-        <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/40">
-          Progetti e collaborazioni
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-3 text-sm text-white/60">
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
-            CertifyQuiz
-          </span>
-
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
-            Dentro le Parole
-          </span>
-
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
-            Progetti editoriali
-          </span>
-
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:border-cyan-300/30 hover:bg-white/10">
-            Landing page professionali
-          </span>
+          <div className="orbit-pill">{tag.label}</div>
         </div>
-      </div>
+      ))}
     </div>
+
+    {/* TITLE */}
+    <h1
+      onMouseEnter={() => setHeroHovered(true)}
+      onMouseLeave={() => setHeroHovered(false)}
+      className="relative z-10 text-balance text-5xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-[5.8rem]">
+    
+      <span className="martens-shine">MartensLab</span>
+    </h1>
   </div>
-</section>
+</div>
+            <p className="mx-auto mt-2 max-w-xl text-base leading-7 text-white/75 sm:text-lg md:text-xl">
+              Realizzo siti web moderni, curati e veloci per attività,
+              professionisti e progetti che vogliono presentarsi bene online e
+              lasciare il segno.
+            </p>
 
+            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/contatti"
+                className="rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.03] hover:bg-cyan-300"
+              >
+                Richiedi un preventivo
+              </Link>
 
-     
+              <a
+                href="#servizi"
+                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition duration-300 hover:scale-[1.03] hover:bg-white/10"
+              >
+                Scopri i servizi
+              </a>
+            </div>
 
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-white/60 md:hidden">
+              {["Siti veloci", "Responsive", "SEO base", "WordPress"].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERIA PROGETTI SCORREVOLE */}
+      <section className="relative overflow-hidden px-6 pb-14 md:px-10 md:pb-18">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 text-center">
+            <p className="text-xs uppercase tracking-[0.35em] text-white/40">
+              Progetti e collaborazioni
+            </p>
+          </div>
+
+          <div className="group relative overflow-hidden">
+            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-[#07111f] to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-[#07111f] to-transparent" />
+
+            <div className="flex w-max gap-5 animate-[marquee_28s_linear_infinite] group-hover:[animation-play-state:paused]">
+              {duplicatedSlides.map((project, index) => (
+                <Link
+                  key={`${project.title}-${index}`}
+                  href="/progetti"
+                  className="w-[280px] shrink-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.07] md:w-[330px]"
+                >
+                  <div className="h-44 w-full overflow-hidden bg-white/5 md:h-52">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition duration-500 hover:scale-[1.04]"
+                    />
+                  </div>
+
+                  <div className="p-5">
+                    <span className="inline-flex mb-1 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
+                      {project.category}
+                    </span>
+
+                    <h3 className="mt-4 text-xl font-semibold text-white">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-6 text-white/60">
+                      Vai al portfolio completo e scopri il progetto.
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* SERVIZI */}
       <section id="servizi" className="relative px-6 py-12 md:px-10 md:py-16">
@@ -180,7 +224,8 @@ export default function HomePage() {
             </h2>
             <p className="mt-3 max-w-2xl text-white/65">
               Realizzo siti chiari, veloci e credibili, ma posso aiutare anche su
-              manutenzione, piccoli interventi tecnici, restyling e migrazioni di siti WordPress.
+              manutenzione, piccoli interventi tecnici, restyling e migrazioni
+              di siti WordPress.
             </p>
           </div>
 
@@ -197,90 +242,15 @@ export default function HomePage() {
                     <Icon className="h-5 w-5 text-cyan-200" />
                   </div>
 
-                  <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-white/65">{service.desc}</p>
+                  <h3 className="text-xl font-semibold text-white">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-white/65">
+                    {service.desc}
+                  </p>
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* TECNOLOGIE */}
-      <section className="relative px-6 py-8 md:px-10 md:py-10">
-        <div className="mx-auto max-w-6xl">
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 backdrop-blur md:p-8">
-            <div className="mb-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/55">
-                Tecnologie e ambiti
-              </p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
-                Strumenti e competenze che uso più spesso
-              </h2>
-              <p className="mt-3 max-w-2xl text-white/65">
-                Non mi interessa complicare i progetti con stack inutili: scelgo strumenti
-                adatti, leggeri e concreti in base al tipo di sito e agli obiettivi.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-              {techStack.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:border-cyan-300/25 hover:bg-white/[0.08]"
-                  >
-                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
-                      <Icon className="h-4.5 w-4.5 text-white/80" />
-                    </div>
-                    <p className="text-sm font-medium text-white/85">{item.label}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PROGETTI */}
-      <section className="relative px-6 py-12 md:px-10 md:py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-8 md:mb-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300/80">
-              Progetti
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
-              Alcuni lavori e direzioni creative
-            </h2>
-            <p className="mt-3 max-w-2xl text-white/65">
-              Due progetti veri valgono più di dieci promesse. Qui puoi mostrare
-              quello che sai fare, con stili diversi e personalità diverse.
-            </p>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-3">
-            {projects.map((project) => (
-              <article
-                key={project.title}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition duration-300 hover:border-emerald-300/30 hover:bg-white/[0.07]"
-              >
-                <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
-                  {project.tag}
-                </span>
-
-                <h3 className="mt-4 text-2xl font-semibold">{project.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/65">{project.desc}</p>
-
-                <a
-                  href="/progetti"
-                  className="mt-6 inline-flex text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
-                >
-                  Vedi di più →
-                </a>
-              </article>
-            ))}
           </div>
         </div>
       </section>
@@ -296,8 +266,7 @@ export default function HomePage() {
               Siti pensati per essere belli, chiari e credibili
             </h2>
             <p className="mt-4 max-w-2xl text-white/70">
-              Dopo aver lavorato su progetti reali, ho capito una cosa semplice:
-              un sito deve colpire, ma deve anche farsi capire. Per questo unisco
+              Un sito deve colpire, ma deve anche farsi capire. Per questo unisco
               design, struttura e attenzione tecnica senza complicare tutto.
             </p>
 
@@ -312,7 +281,7 @@ export default function HomePage() {
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                 <h3 className="font-semibold">Sviluppo pulito</h3>
                 <p className="mt-2 text-sm text-white/65">
-                  Componenti riutilizzabili, responsive vero e struttura ordinata.
+                  Componenti ordinati, responsive vero e struttura solida.
                 </p>
               </div>
 
@@ -345,19 +314,19 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4">
-              <a
+              <Link
                 href="/contatti"
                 className="rounded-2xl bg-cyan-400 px-6 py-3 text-center font-semibold text-slate-950 transition duration-300 hover:scale-[1.02] hover:bg-cyan-300"
               >
                 Scrivimi ora
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/chi-sono"
                 className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-center font-semibold text-white transition duration-300 hover:bg-white/10"
               >
                 Scopri chi c’è dietro MartensLab
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -375,22 +344,33 @@ export default function HomePage() {
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a
+            <Link
               href="/contatti"
               className="rounded-2xl bg-gradient-to-r from-cyan-400 to-emerald-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.03]"
             >
               Richiedi una valutazione
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/progetti"
               className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white transition duration-300 hover:bg-white/10"
             >
               Guarda i progetti
-            </a>
+            </Link>
           </div>
         </div>
       </section>
+
+      <style jsx global>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-50% - 10px));
+          }
+        }
+      `}</style>
     </main>
   );
 }
