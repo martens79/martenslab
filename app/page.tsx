@@ -56,21 +56,31 @@ const projectSlides = [
     title: "CertifyQuiz",
     category: "Piattaforma quiz",
     image: "/images/projects/certifyquiz.jpg",
+    link: "https://www.certifyquiz.com",
   },
   {
     title: "Dentro le Parole",
     category: "Sito editoriale",
     image: "/images/projects/dentro-le-parole.jpg",
+    link: "https://www.dentroleparole.com",
   },
   {
     title: "Trattoria Genovese",
     category: "Demo ristorante",
     image: "/images/projects/trattoria-genovese.jpg",
+    link: "https://www.trattoriagenovese.it",
+  },
+  {
+    title: "Studio Legale Fratelli Rossi",
+    category: "Sito professionale",
+    image: "/images/projects/studio-legale-rossi.jpg",
+    link: "https://studiolegalefratellirossi.it",
   },
   {
     title: "Hai un progetto?",
     category: "Richiedi un sito",
     image: "/images/projects/start-project.jpg",
+    link: "/contatti",
   },
 ];
 const duplicatedSlides = [...projectSlides, ...projectSlides];
