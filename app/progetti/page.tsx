@@ -1,36 +1,50 @@
 import Link from "next/link";
 
 export default function ProgettiPage() {
- const projects = [
-  {
-    title: "CertifyQuiz",
-    tag: "Piattaforma quiz",
-    desc: "Piattaforma multi-lingua per quiz e certificazioni IT, progettata con attenzione a UX, struttura dei contenuti, performance e crescita SEO.",
-    link: "https://www.certifyquiz.com",
-    cta: "Visita il progetto",
-  },
-  {
-    title: "Dentro le Parole",
-    tag: "Sito editoriale",
-    desc: "Sito d’autore con estetica dark fantasy, pensato per comunicare identità narrativa, atmosfera e presenza online professionale.",
-    link: "https://www.dentroleparole.com",
-    cta: "Visita il progetto",
-  },
-  {
-    title: "Trattoria Genovese",
-    tag: "Sito ristorante",
-    desc: "Landing page dimostrativa per un ristorante locale, costruita per valorizzare atmosfera, menu, identità visiva e contatto rapido con i clienti.",
-    link: "https://www.trattoriagenovese.it/",
-    cta: "Visita il progetto",
-  },
-  {
-    title: "Hai un progetto in mente?",
-    tag: "Nuovo progetto",
-    desc: "Sito vetrina, landing page, restyling o supporto tecnico: ogni lavoro parte da obiettivi chiari, struttura solida e attenzione all’immagine del cliente.",
-    link: "/contatti",
-    cta: "Parliamone",
-  },
-];
+  const projects = [
+    {
+      title: "CertifyQuiz",
+      tag: "Piattaforma quiz",
+      desc: "Piattaforma multi-lingua per quiz e certificazioni IT, progettata con attenzione a UX, struttura dei contenuti, performance e crescita SEO.",
+      link: "https://www.certifyquiz.com",
+      cta: "Visita il progetto",
+    },
+    {
+      title: "Dentro le Parole",
+      tag: "Sito editoriale",
+      desc: "Sito d’autore con estetica dark fantasy, pensato per comunicare identità narrativa, atmosfera e presenza online professionale.",
+      link: "https://www.dentroleparole.com",
+      cta: "Visita il progetto",
+    },
+    {
+      title: "Trattoria Genovese",
+      tag: "Sito ristorante",
+      desc: "Landing page dimostrativa per un ristorante locale, costruita per valorizzare atmosfera, menu, identità visiva e contatto rapido con i clienti.",
+      link: "https://www.trattoriagenovese.it/",
+      cta: "Visita il progetto",
+    },
+    {
+      title: "Studio Legale Fratelli Rossi",
+      tag: "Sito professionale",
+      desc: "Sito vetrina per studio legale progettato per trasmettere affidabilità, chiarezza e presenza professionale online, con struttura pulita e contatto diretto.",
+      link: "https://studiolegalefratellirossi.it",
+      cta: "Visita il progetto",
+    },
+    {
+      title: "Personal Trainer Marco Bianchi",
+      tag: "Landing fitness",
+      desc: "Landing page dimostrativa per personal trainer, progettata per presentare servizi, risultati, testimonianze e contatti in modo chiaro e professionale.",
+      link: "https://martens79-personal-trainer-marco-bi.vercel.app/",
+      cta: "Visita il progetto",
+    },
+    {
+      title: "Hai un progetto in mente?",
+      tag: "Nuovo progetto",
+      desc: "Sito vetrina, landing page, restyling o supporto tecnico: ogni lavoro parte da obiettivi chiari, struttura solida e attenzione all’immagine del cliente.",
+      link: "/contatti",
+      cta: "Parliamone",
+    },
+  ];
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#07111f] text-white">
