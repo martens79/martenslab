@@ -77,11 +77,11 @@ const projectSlides = [
     link: "https://studiolegalefratellirossi.it",
   },
   {
-    title: "Personal Trainer Marco Bianchi",
-    category: "Landing fitness",
-    image: "/images/projects/personal-trainer.jpg",
-    link: "https://martens79-personal-trainer-marco-bi.vercel.app/",
-  },
+  title: "Personal Trainer Marco Bianchi",
+  category: "Landing fitness",
+  image: "/images/projects/trainer-portrait.jpg",
+  link: "https://martens79-personal-trainer-marco-bi.vercel.app/",
+},
   {
     title: "Hai un progetto?",
     category: "Richiedi un sito",
