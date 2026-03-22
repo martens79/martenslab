@@ -51,6 +51,27 @@ const floatingTags = [
   { label: "Siti veloci", radius: 145, angle: 150, duration: 16 },
 ];
 
+const mobileFloatingTags = [
+  {
+    label: "Design",
+    className: "left-3 top-3",
+    duration: "4.8s",
+    delay: "0s",
+  },
+  {
+    label: "Responsive",
+    className: "right-3 top-5",
+    duration: "5.4s",
+    delay: "0.6s",
+  },
+  {
+    label: "SEO base",
+    className: "left-1/2 bottom-2 -translate-x-1/2",
+    duration: "5s",
+    delay: "1.1s",
+  },
+];
+
 const projectSlides = [
   {
     title: "CertifyQuiz",
@@ -77,11 +98,11 @@ const projectSlides = [
     link: "https://studiolegalefratellirossi.it",
   },
   {
-  title: "Personal Trainer Marco Bianchi",
-  category: "Landing fitness",
-  image: "/images/projects/trainer-portrait.jpg",
-  link: "https://martens79-personal-trainer-marco-bi.vercel.app/",
-},
+    title: "Personal Trainer Marco Bianchi",
+    category: "Landing fitness",
+    image: "/images/projects/trainer-portrait.jpg",
+    link: "https://martens79-personal-trainer-marco-bi.vercel.app/",
+  },
   {
     title: "Hai un progetto?",
     category: "Richiedi un sito",
@@ -89,10 +110,12 @@ const projectSlides = [
     link: "/contatti",
   },
 ];
+
 const duplicatedSlides = [...projectSlides, ...projectSlides];
 
 export default function HomePage() {
   const [heroHovered, setHeroHovered] = useState(false);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#07111f] text-white">
       {/* SFONDO */}
@@ -103,71 +126,120 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:38px_38px]" />
       </div>
 
-      {/* HERO */}
-      <section className="relative flex min-h-[60vh] items-center px-6 pb-4 pt-14 md:px-10 md:pb-6 md:pt-16">
+            {/* HERO */}
+      <section className="relative flex min-h-[60vh] items-center overflow-hidden px-4 pb-4 pt-12 sm:px-6 md:px-10 md:pb-6 md:pt-16">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="relative mx-auto max-w-4xl text-center">
-            <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
-              Studio web indipendente · design + sviluppo
+          <div className="relative mx-auto max-w-4xl overflow-hidden text-center">
+            <span className="inline-flex max-w-[92%] rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-center text-[11px] text-white/75 backdrop-blur sm:text-sm">
+              <span className="sm:hidden">Design + sviluppo web</span>
+              <span className="hidden sm:inline">
+                Studio web indipendente · design + sviluppo
+              </span>
             </span>
 
-    <div className="relative mt-3 flex justify-center">
-  <div className="relative flex h-[200px] w-full max-w-[900px] items-center justify-center md:h-[240px]">
-    {/* ORBITING TAGS */}
-    <div className="pointer-events-none absolute inset-0 hidden md:block">
-      {floatingTags.map((tag, i) => (
-        <div
-          key={tag.label}
-          className={`orbit ${heroHovered ? "orbit-expanded" : ""}`}
-          style={
-            {
-              "--radius": `${tag.radius}px`,
-              "--radius-expanded": `${tag.radius + 34}px`,
-              "--angle": `${tag.angle}deg`,
-              "--duration": `${tag.duration}s`,
-              "--delay": `${i * -2}s`,
-            } as CSSProperties
-          }
-        >
-          <div className="orbit-pill">{tag.label}</div>
-        </div>
-      ))}
-    </div>
+            <div className="relative mt-2 flex justify-center sm:mt-2 md:mt-3">
+              <div className="relative flex h-[150px] w-full max-w-[900px] items-center justify-center sm:h-[170px] md:h-[240px]">
+                {/* ORBITING TAGS DESKTOP */}
+                <div className="pointer-events-none absolute inset-0 hidden md:block">
+                  {floatingTags.map((tag, i) => (
+                    <div
+                      key={tag.label}
+                      className={`orbit ${heroHovered ? "orbit-expanded" : ""}`}
+                      style={
+                        {
+                          "--radius": `${tag.radius}px`,
+                          "--radius-expanded": `${tag.radius + 34}px`,
+                          "--angle": `${tag.angle}deg`,
+                          "--duration": `${tag.duration}s`,
+                          "--delay": `${i * -2}s`,
+                        } as CSSProperties
+                      }
+                    >
+                      <div className="orbit-pill">{tag.label}</div>
+                    </div>
+                  ))}
+                </div>
 
-    {/* TITLE */}
-    <h1
-      onMouseEnter={() => setHeroHovered(true)}
-      onMouseLeave={() => setHeroHovered(false)}
-      className="relative z-10 text-balance text-5xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-[5.8rem]">
-    
-      <span className="martens-shine">MartensLab</span>
-    </h1>
-  </div>
-</div>
-            <p className="mx-auto mt-2 max-w-xl text-base leading-7 text-white/75 sm:text-lg md:text-xl">
+                {/* FLOATING TAGS MOBILE */}
+                <div className="pointer-events-none absolute inset-0 md:hidden">
+                  <div
+                    className="absolute left-4 top-6 mobile-float"
+                    style={
+                      {
+                        "--float-duration": "4.8s",
+                        "--float-delay": "0s",
+                      } as CSSProperties
+                    }
+                  >
+                    <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] text-white/70 backdrop-blur">
+                      Design
+                    </span>
+                  </div>
+
+                  <div
+                    className="absolute right-4 top-8 mobile-float"
+                    style={
+                      {
+                        "--float-duration": "5.4s",
+                        "--float-delay": "0.6s",
+                      } as CSSProperties
+                    }
+                  >
+                    <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] text-white/70 backdrop-blur">
+                      Responsive
+                    </span>
+                  </div>
+
+                  <div
+                    className="absolute left-1/2 bottom-4 -translate-x-1/2 mobile-float"
+                    style={
+                      {
+                        "--float-duration": "5s",
+                        "--float-delay": "1.1s",
+                      } as CSSProperties
+                    }
+                  >
+                    <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] text-white/70 backdrop-blur">
+                      SEO
+                    </span>
+                  </div>
+                </div>
+
+                {/* TITLE */}
+                <h1
+                  onMouseEnter={() => setHeroHovered(true)}
+                  onMouseLeave={() => setHeroHovered(false)}
+                  className="relative z-10 text-balance text-[2.45rem] font-black leading-none tracking-tight sm:text-6xl md:text-7xl lg:text-[5.8rem]"
+                >
+                  <span className="martens-shine">MartensLab</span>
+                </h1>
+              </div>
+            </div>
+
+            <p className="mx-auto mt-3 max-w-[34ch] text-base leading-7 text-white/75 sm:max-w-xl sm:text-lg md:text-xl">
               Realizzo siti web moderni, curati e veloci per attività,
               professionisti e progetti che vogliono presentarsi bene online e
               lasciare il segno.
             </p>
 
-            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
               <Link
                 href="/contatti"
-                className="rounded-2xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition duration-300 hover:scale-[1.03] hover:bg-cyan-300"
+                className="w-full rounded-2xl bg-cyan-400 px-6 py-3 text-center font-semibold text-slate-950 transition duration-300 hover:scale-[1.02] hover:bg-cyan-300 sm:w-auto"
               >
                 Richiedi un preventivo
               </Link>
 
               <a
                 href="#servizi"
-                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition duration-300 hover:scale-[1.03] hover:bg-white/10"
+                className="w-full rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-center font-semibold text-white backdrop-blur transition duration-300 hover:scale-[1.02] hover:bg-white/10 sm:w-auto"
               >
                 Scopri i servizi
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-white/60 md:hidden">
-              {["Siti veloci", "Responsive", "SEO base", "WordPress"].map((item) => (
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm text-white/60 md:hidden">
+              {["Siti veloci", "WordPress", "SEO base"].map((item) => (
                 <span
                   key={item}
                   className="rounded-full border border-white/10 bg-white/5 px-3 py-1"
@@ -209,7 +281,7 @@ export default function HomePage() {
                   </div>
 
                   <div className="p-5">
-                    <span className="inline-flex mb-1 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
+                    <span className="mb-1 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 backdrop-blur">
                       {project.category}
                     </span>
 
@@ -385,6 +457,23 @@ export default function HomePage() {
           100% {
             transform: translateX(calc(-50% - 10px));
           }
+        }
+
+        @keyframes mobileFloat {
+          0%,
+          100% {
+            transform: translateY(0px);
+            opacity: 0.72;
+          }
+          50% {
+            transform: translateY(-8px);
+            opacity: 1;
+          }
+        }
+
+        .mobile-float {
+          animation: mobileFloat var(--float-duration, 5s) ease-in-out infinite;
+          animation-delay: var(--float-delay, 0s);
         }
       `}</style>
     </main>
